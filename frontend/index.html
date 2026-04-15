@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Background Remover — Remove Backgrounds Instantly</title>
+  <meta name="description" content="Upload any photo and remove the background in seconds using U2Net AI. Free, fast, and no sign-up required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- ── Animated mesh background ── -->
+  <div class="mesh" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="nav-icon">✦</span>
+      <span>BG<strong>Eraser</strong></span>
+    </div>
+    <div class="nav-links">
+      <a href="#how-it-works">How it works</a>
+      <a href="http://localhost:8000/docs" target="_blank" rel="noopener">API Docs</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="badge">⚡ Powered by U2Net AI</div>
+    <h1>Remove Backgrounds<br /><span class="gradient-text">Instantly with AI</span></h1>
+    <p class="hero-sub">
+      Upload a photo, get a clean transparent PNG in seconds.<br />
+      No watermarks. No sign-up. 100% free.
+    </p>
+  </header>
+
+  <!-- ── Main card ── -->
+  <main class="container">
+    <section class="card upload-card" id="upload-section">
+
+      <!-- ── Drop zone ── -->
+      <div
+        class="drop-zone"
+        id="drop-zone"
+        role="button"
+        tabindex="0"
+        aria-label="Image upload area. Click or drag and drop an image here."
+      >
+        <div class="drop-zone-inner" id="dz-default">
+          <div class="dz-icon">🖼️</div>
+          <p class="dz-title">Drag &amp; drop your image here</p>
+          <p class="dz-sub">or click to browse — JPG, PNG, WebP · max 5 MB</p>
+          <button class="btn btn-outline" id="browse-btn" type="button">Browse files</button>
+        </div>
+        <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" hidden />
+      </div>
+
+      <!-- ── Background colour option ── -->
+      <div class="options-row" id="options-row" hidden>
+        <label class="option-label">
+          <input type="checkbox" id="chk-color" />
+          Replace background with colour
+        </label>
+        <input
+          type="color"
+          id="color-picker"
+          value="#ffffff"
+          title="Pick background colour"
+          disabled
+        />
+      </div>
+
+      <!-- ── Process button ── -->
+      <div class="action-row" id="action-row" hidden>
+        <button class="btn btn-primary" id="process-btn" type="button">
+          <span class="btn-label">Remove Background</span>
+          <span class="btn-spinner" hidden></span>
+        </button>
+        <button class="btn btn-ghost" id="clear-btn" type="button">✕ Clear</button>
+      </div>
+
+      <!-- ── Error banner ── -->
+      <div class="error-banner" id="error-banner" hidden role="alert">
+        <span class="error-icon">⚠️</span>
+        <span id="error-msg"></span>
+      </div>
+    </section>
+
+    <!-- ── Preview section ── -->
+    <section class="card preview-card" id="preview-section" hidden>
+      <h2 class="section-title">Result</h2>
+      <div class="preview-grid">
+        <div class="preview-pane">
+          <div class="pane-label">Original</div>
+          <div class="pane-img-wrap checkered">
+            <img id="img-original" alt="Original image" />
+          </div>
+        </div>
+        <div class="preview-divider" aria-hidden="true">
+          <div class="divider-line"></div>
+          <div class="divider-icon">→</div>
+          <div class="divider-line"></div>
+        </div>
+        <div class="preview-pane">
+          <div class="pane-label">Processed</div>
+          <div class="pane-img-wrap checkered">
+            <img id="img-processed" alt="Processed image with background removed" />
+          </div>
+        </div>
+      </div>
+      <div class="download-row">
+        <a id="download-link" class="btn btn-primary" download="background_removed.png">
+          ⬇ Download PNG
+        </a>
+        <button class="btn btn-outline" id="try-another-btn" type="button">
+          Try another image
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Processing overlay ── -->
+    <div class="processing-overlay" id="processing-overlay" hidden aria-live="polite">
+      <div class="processing-card">
+        <div class="spinner-ring"></div>
+        <p class="processing-text">Removing background…</p>
+        <p class="processing-sub">AI is analysing your image</p>
+      </div>
+    </div>
+
+    <!-- ── How it works ── -->
+    <section class="how-it-works" id="how-it-works">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">📤</div>
+          <h3>Upload</h3>
+          <p>Drag &amp; drop or browse any JPG, PNG, or WebP image under 5 MB.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">🤖</div>
+          <h3>AI Processing</h3>
+          <p>The U2Net deep-learning model identifies the subject and isolates it.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">✨</div>
+          <h3>Download</h3>
+          <p>Get a full-resolution transparent PNG instantly — ready for any use.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <p>Built with ❤️ using <strong>FastAPI</strong> + <strong>rembg</strong> (U2Net) + <strong>Pillow</strong></p>
+    <p class="footer-sub">Open-source · No data stored · Privacy first</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

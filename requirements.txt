@@ -1,0 +1,11 @@
+# ── Core web framework ──────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9      # Required for FastAPI file uploads
+
+# ── AI / Image processing ────────────────────────────────────────────────────
+rembg[cpu]>=2.0.57           # Background removal with CPU ONNX runtime (downloads U2Net model ~170 MB on first run)
+Pillow>=10.3.0               # Image manipulation
+
+# ── Optional but recommended ─────────────────────────────────────────────────
+# opencv-python-headless>=4.9   # Uncomment if you need OpenCV utilities
