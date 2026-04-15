@@ -2,7 +2,7 @@
    style.css — AI Background Remover  |  Premium dark glassmorphism design
    ───────────────────────────────────────────────────────────────────────────── */
 
-/* ── 1. Design tokens ─────────────────────────────────────────────────────── */
+/* ── 1. Design tokens */
 :root {
   /* Colour palette */
   --c-bg:          #0b0c10;
@@ -39,7 +39,7 @@
   --transition:  all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── 2. Reset & base ─────────────────────────────────────────────────────── */
+/*2.Reset & base*/
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -53,48 +53,8 @@ body {
   overflow-x: hidden;
 }
 
-/* ── 3. Animated mesh background ────────────────────────────────────────── */
-.mesh {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.18;
-  animation: drift 18s ease-in-out infinite alternate;
-}
-
-.blob-1 {
-  width: 600px; height: 600px;
-  background: #6c63ff;
-  top: -200px; left: -150px;
-  animation-delay: 0s;
-}
-.blob-2 {
-  width: 500px; height: 500px;
-  background: #38bdf8;
-  bottom: -100px; right: -100px;
-  animation-delay: -6s;
-}
-.blob-3 {
-  width: 400px; height: 400px;
-  background: #a78bfa;
-  top: 40%; left: 40%;
-  animation-delay: -12s;
-}
-
-@keyframes drift {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(40px, 30px) scale(1.08); }
-}
-
-/* ── 4. Navbar ───────────────────────────────────────────────────────────── */
+/*3.Navbar*/
 .navbar {
   position: sticky;
   top: 0;
@@ -139,7 +99,7 @@ body {
 
 .nav-links a:hover { color: var(--c-text); }
 
-/* ── 5. Hero ─────────────────────────────────────────────────────────────── */
+/* 4. Hero */
 .hero {
   position: relative;
   z-index: 1;
@@ -170,13 +130,6 @@ body {
   animation: fadeDown 0.6s 0.1s ease both;
 }
 
-.gradient-text {
-  background: var(--g-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .hero-sub {
   color: var(--c-text-muted);
   font-size: 1.05rem;
@@ -190,7 +143,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── 6. Container & cards ───────────────────────────────────────────────── */
+/* 5. Container & cards */
 .container {
   position: relative;
   z-index: 1;
@@ -214,7 +167,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── 7. Drop zone ────────────────────────────────────────────────────────── */
+/* 6. Drop zone */
 .drop-zone {
   border: 2px dashed var(--c-border-h);
   border-radius: var(--radius-md);
@@ -271,7 +224,7 @@ body {
   margin-top: var(--sp-xs);
 }
 
-/* ── 8. Options row ──────────────────────────────────────────────────────── */
+/* 8. Options row  */
 .options-row {
   display: flex;
   align-items: center;
