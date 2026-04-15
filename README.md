@@ -1,4 +1,4 @@
-# ✦ AI Background Remover
+# AI Background Remover
 
 > Remove image backgrounds instantly using the U2Net AI model — served via a FastAPI backend and a premium dark-mode frontend.
 
